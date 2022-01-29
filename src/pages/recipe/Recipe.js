@@ -7,12 +7,21 @@ const Recipe = () => {
   const url = 'http://localhost:3000/recipes/' + id;
   const { data: recipe, isPending } = useFetch(url);
 
-  console.log(recipe);
-
   return (
     <div className='recipe'>
       {isPending && <p className='loading'>Loading...</p>}
-      {recipe && <h1>{recipe.title}</h1>}
+      {recipe && (
+        <>
+          <h2 className='page-title'>{recipe.title}</h2>
+          <p>Takes {recipe.cookingTime} to cook.</p>
+          <ul>
+            {recipe.ingredients.map((ing) => (
+              <li key={ing}>{ing}</li>
+            ))}
+          </ul>
+          <p className='method'>{recipe.method}</p>
+        </>
+      )}
     </div>
   );
 };
