@@ -12,7 +12,7 @@ const themeReducer = (state, action) => {
 };
 
 export const ThemeProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(themeReducer, { color: 'blue' });
+  const [state, dispatch] = useReducer(themeReducer, { color: '#58249c' });
 
   const changeColor = (color) => {
     dispatch({ type: 'CHANGE_COLOR', payload: color });

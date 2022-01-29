@@ -6,12 +6,14 @@ import Create from './pages/create/Create';
 import Recipe from './pages/recipe/Recipe';
 import Search from './pages/search/Search';
 import Navbar from './components/Navbar';
+import ThemeSelector from './components/ThemeSelector';
 
 function App() {
   return (
     <div className='App'>
       <Router>
         <Navbar />
+        <ThemeSelector />
         <Switch>
           <Route exact path='/'>
             <Home />
