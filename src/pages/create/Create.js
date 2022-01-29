@@ -1,5 +1,6 @@
 import './Create.css';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const Create = () => {
   const [title, setTitle] = useState('');
@@ -8,10 +9,13 @@ const Create = () => {
   const [newIngredient, setNewIngredient] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const ingredientInput = useRef(null);
+  const histoy = useHistory();
+  const [sub, setSub] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(title, method, cookingTime, ingredients);
+    console.log(title, ingredients, method, cookingTime);
+    setSub(true);
   };
 
   const handleAdd = (e) => {
@@ -24,6 +28,12 @@ const Create = () => {
     setNewIngredient('');
     ingredientInput.current.focus();
   };
+
+  useEffect(() => {
+    if (sub) {
+      histoy.push('/');
+    }
+  }, [sub, histoy]);
 
   return (
     <div className='create'>

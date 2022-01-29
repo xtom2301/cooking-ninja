@@ -15,7 +15,6 @@ export const useFetch = (url) => {
       setIsPending(false);
       setData(data);
     };
-
     fetchData();
 
     return () => {
